@@ -1,0 +1,23 @@
+{
+    "FilePaths":
+    [
+        {   
+            "Title" : "chuage shot",
+            "ExePath" : "",
+            "IconPath" : "Icon_ChargeShot",
+            "DescriptionPath": ""
+        },
+        {   
+            "Title" : "a",
+            "ExePath" : "",
+            "IconPath" : "Tap",
+            "DescriptionPath": ""
+        },
+        {   
+            "Title" : "b",
+            "ExePath" : "",
+            "IconPath" : "",
+            "DescriptionPath": ""
+        }        
+    ]
+}
