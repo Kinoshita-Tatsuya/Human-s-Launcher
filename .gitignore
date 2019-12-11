@@ -57,3 +57,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+Human-s-Launcher/Library/
+Human-s-Launcher/Logs/
+Human-s-Launcher/obj/
