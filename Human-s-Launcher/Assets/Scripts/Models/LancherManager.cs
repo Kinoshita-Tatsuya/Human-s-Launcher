@@ -2,7 +2,7 @@
 using UnityEngine;
 using MiniJSON;
 using System.Collections.Generic;
-using HumansLancher.Models;
+using System.Diagnostics;
 using System;
 
 namespace HumansLancher.Models
@@ -14,6 +14,8 @@ namespace HumansLancher.Models
         public int SelectingNum { get; private set; } = 0;
 
         public event EventHandler selectingNumChanged;
+
+        private Process proc = new Process();
 
         // Start is called before the first frame update
         void Awake()
@@ -31,6 +33,11 @@ namespace HumansLancher.Models
             if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 DecrementSelectingNum();
+            }
+
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                LaunchProcess();
             }
         }
 
@@ -64,6 +71,24 @@ namespace HumansLancher.Models
             SelectingNum--;
             SelectingNum = (SelectingNum < 0) ? gameDatas.Count - 1 : SelectingNum;
             selectingNumChanged(this, EventArgs.Empty);
+        }
+        
+        private void LaunchProcess()
+        {           
+            proc.StartInfo.FileName = gameDatas[SelectingNum].ExePath;
+            proc.Start();
+        }
+
+        private void OnApplicationQuit()
+        {
+            if (!proc.HasExited)
+            {
+                // 別アプリが起動中の場合のみ終了させる
+                proc.CloseMainWindow();
+            }
+
+            proc.Close();
+            proc = null;
         }
     }
 }

@@ -1,23 +1,22 @@
 {
-    "FilePaths":
-    [
-        {   
-            "Title" : "chuage shot",
-            "ExePath" : "",
-            "IconPath" : "Icon_ChargeShot",
-            "DescriptionPath": ""
-        },
-        {   
-            "Title" : "a",
-            "ExePath" : "",
-            "IconPath" : "Tap",
-            "DescriptionPath": ""
-        },
-        {   
-            "Title" : "b",
-            "ExePath" : "",
-            "IconPath" : "",
-            "DescriptionPath": ""
-        }        
-    ]
-}
+  "FilePaths": [
+    {
+      "DescriptionPath": "",
+      "ExePath": "C:/Users/tatsu/Desktop/StarLight_Line/StarLight_Line/StarLight_Line",
+      "IconPath": "Icon_ChargeShot",
+      "Title": "chuage shot"
+    },
+    {
+      "Title": "a",
+      "ExePath": "",
+      "IconPath": "Tap",
+      "DescriptionPath": ""
+    },
+    {
+      "Title": "b",
+      "ExePath": "",
+      "IconPath": "",
+      "DescriptionPath": ""
+    }
+  ]
+}                 
