@@ -15,7 +15,7 @@ namespace HumansLancher.Models
 
         public event EventHandler selectingNumChanged;
 
-        private Process proc = new Process();
+        private Process proc { get; set; }
 
         // Start is called before the first frame update
         void Awake()
@@ -74,21 +74,22 @@ namespace HumansLancher.Models
         }
         
         private void LaunchProcess()
-        {           
-            proc.StartInfo.FileName = gameDatas[SelectingNum].ExePath;
-            proc.Start();
-        }
-
-        private void OnApplicationQuit()
         {
-            if (!proc.HasExited)
-            {
-                // 別アプリが起動中の場合のみ終了させる
-                proc.CloseMainWindow();
-            }
+            if (proc != null) return;
 
-            proc.Close();
-            proc = null;
+            proc = new Process();
+
+            proc.StartInfo.FileName = gameDatas[SelectingNum].ExePath;
+
+            proc.EnableRaisingEvents = true;
+
+            proc.Exited += (s, e) =>
+            {
+                proc.Dispose();
+                proc = null;
+            };
+
+            proc.Start();
         }
     }
 }

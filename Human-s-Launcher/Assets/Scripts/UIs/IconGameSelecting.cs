@@ -29,7 +29,7 @@ namespace HumansLancher.UIs
                     Sprite.Create(
                         texture,
                         new Rect(0f, 0f, texture.width, texture.height),
-                        Vector2.zero);
+                        Vector2.zero);                
 
                 Icons.Add(sprite);
                 
