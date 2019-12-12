@@ -10,7 +10,8 @@ namespace HumansLancher.UIs.IconList
     public class IconList : MonoBehaviour
     {
         [SerializeField] Sprite defaultSprite = null;
-        [SerializeField] Icon iconPrefab = null;       
+        [SerializeField] Icon iconPrefab = null;
+        [SerializeField] GameObject frame = null;
 
         void Start()
         {
@@ -75,11 +76,13 @@ namespace HumansLancher.UIs.IconList
         void EnableSelecting()
         {
             canExecute = true;
+            frame.SetActive(true);
         }
 
         void DisableSelecting()
         {
             canExecute = false;
+            frame.SetActive(false);
         }
 
         IIconLocator iconLocator;
