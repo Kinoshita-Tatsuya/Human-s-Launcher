@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
+using UnityEditor;
 
 namespace HumansLancher.Models.Executable
 {
@@ -12,24 +14,36 @@ namespace HumansLancher.Models.Executable
         {
             //他のプロセスが起動中なら実行しない
             if (proc != null) return;
-
-            proc = new Process();
-
-            //起動したいファイルのパス
-            proc.StartInfo.FileName = ExePath;
-
-            //別プロセス終了時の処理を行うようにするフラグをオン
-            proc.EnableRaisingEvents = true;
-
-            //実際の終了処理
-            proc.Exited += (s, e) =>
+            try
             {
-                proc.Dispose();
-                proc = null;
-            };
+                ExecuteProcess();
+            }
+            catch (Win32Exception e)
+            {
+                EditorUtility.DisplayDialog("❌Error", "ファイルパスに間違いがあります。\n" + e.Message, "OK");
+            }
+        }
 
-            //実行
-            proc.Start();
+        private void ExecuteProcess()
+        {
+            using (proc = new Process())
+            {
+                //起動したいファイルのパス
+                proc.StartInfo.FileName = ExePath;
+
+                //別プロセス終了時の処理を行うようにするフラグをオン
+                proc.EnableRaisingEvents = true;
+
+                //実際の終了処理
+                proc.Exited += (s, e) =>
+                {
+                    proc.Dispose();
+                    proc = null;
+                };
+
+                //実行
+                proc.Start();
+            }
         }
 
         Process proc { get; set; } = null;
