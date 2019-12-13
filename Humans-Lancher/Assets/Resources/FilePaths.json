@@ -1,4 +1,13 @@
 {
+  "書式説明" : [
+    {
+    "Title": "ゲームタイトル",
+    "ExePath": "実行ファイルのショートカットのパス(例:　Foo/Bar.exe.Lnk or Foo\\Bar.exe.Lnk",
+    "TexturePath": "ランチャー内で表示するアイコンのパス サイズは512*512にすること",
+    "DescriptionPath": "ゲームの説明書きPDFのパス",
+    "": "簡易説明　HTMLの装飾タグ使用可能"
+    }
+  ],
   "FilePaths": [
     {
       "Title": "Chuage shot",
