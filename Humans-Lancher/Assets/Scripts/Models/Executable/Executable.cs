@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using UnityEditor;
 
@@ -21,6 +22,10 @@ namespace HumansLancher.Models.Executable
             catch (Win32Exception e)
             {
                 EditorUtility.DisplayDialog("❌Error", "ファイルパスに間違いがあります。\n" + e.Message, "OK");
+            }
+            catch (InvalidOperationException e)
+            {
+                EditorUtility.DisplayDialog("❌Error", "ファイルパスが存在しません。\n" + e.Message, "OK");
             }
         }
 
