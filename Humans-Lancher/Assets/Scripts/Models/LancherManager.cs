@@ -9,7 +9,7 @@ namespace HumansLancher.Models
 
         void Update()
         {
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))                
             {
                 iconList.ToNext();
             }
@@ -19,7 +19,7 @@ namespace HumansLancher.Models
                 iconList.ToPrev();
             }
 
-            if(Input.GetKeyDown(KeyCode.Return))
+            if(Input.GetKeyDown(KeyCode.Return) || Input.GetKey("joystick button 1"))
             {
                 iconList.SelectingExecutable?.Execute();
             }
