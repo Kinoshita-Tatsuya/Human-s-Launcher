@@ -15,10 +15,7 @@ namespace HumansLancher.UIs.IconList
 
         void Start()
         {
-            iconLocator = GameObject.Find("IconLocator").GetComponent<IIconLocator>();
-
-            iconLocator.OnMovingStarted += DisableSelecting;
-            iconLocator.OnMovingEnded += EnableSelecting;
+            iconLocator = GameObject.Find("IconLocator").GetComponent<IconLocator_rail>();
 
             IGameDataDAO gameDataDAO = new GameDataDAO();
             var gameDatas = gameDataDAO.GetGameDatas();
@@ -34,11 +31,14 @@ namespace HumansLancher.UIs.IconList
             }
 
             iconLocator.InitPos(icons);
+
+            icons[0].OnAnimStarted += (_)=> { DisableSelecting(); };
+            icons[0].OnAnimEnded += (_) => { EnableSelecting(); };
         }
 
         void Update()
         {
-            iconLocator.UpdatePos(icons);
+           
         }
 
         public AbstractExecutable SelectingExecutable
@@ -66,11 +66,22 @@ namespace HumansLancher.UIs.IconList
         public void ToNext()
         {
             iconLocator.ToNext(icons);
+
+            icons[0].OnAnimEnded += UpdatePos;
         }
 
         public void ToPrev()
         {
             iconLocator.ToPrev(icons);
+
+            icons[0].OnAnimEnded += UpdatePos;
+        }
+
+        void UpdatePos(Icon icon)
+        {
+            iconLocator.UpdatePos(icons);
+
+            icon.OnAnimEnded -= UpdatePos;
         }
 
         void EnableSelecting()
@@ -85,7 +96,7 @@ namespace HumansLancher.UIs.IconList
             frame.SetActive(false);
         }
 
-        IIconLocator iconLocator;
+        IconLocator_rail iconLocator;
 
         bool canExecute = true;
 
