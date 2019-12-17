@@ -32,8 +32,9 @@ namespace HumansLancher.UIs.IconList
 
             iconLocator.InitPos(icons);
 
-            icons[0].OnAnimStarted += (_)=> { DisableSelecting(); };
-            icons[0].OnAnimEnded += (_) => { EnableSelecting(); };
+            icons[0].OnScalingDownStarted += (_)=> { DisableSelecting(); };
+            icons[0].OnScalingDownEnded += UpdatePos;
+            icons[0].OnScalingUpCompleted += (_) => { EnableSelecting(); };
         }
 
         void Update()
@@ -66,22 +67,16 @@ namespace HumansLancher.UIs.IconList
         public void ToNext()
         {
             iconLocator.ToNext(icons);
-
-            icons[0].OnAnimEnded += UpdatePos;
         }
 
         public void ToPrev()
         {
             iconLocator.ToPrev(icons);
-
-            icons[0].OnAnimEnded += UpdatePos;
         }
 
         void UpdatePos(Icon icon)
         {
             iconLocator.UpdatePos(icons);
-
-            icon.OnAnimEnded -= UpdatePos;
         }
 
         void EnableSelecting()

@@ -5,6 +5,8 @@ namespace HumansLancher.UIs.IconList
 {
     public class IconLocator_rail : MonoBehaviour
     {
+        [SerializeField] Vector3 selectingScale = Vector3.zero;
+        [SerializeField] Vector3 nonSelectingScale = Vector3.zero;
         [SerializeField] Transform prevGameIconTransform = null;
         [SerializeField] Transform nextGameIconTransform = null;
         [SerializeField] Vector3 posOutOfWindow = Vector3.zero;
@@ -14,10 +16,13 @@ namespace HumansLancher.UIs.IconList
             var lastIndex = icons.Count - 1;
 
             icons[0].SetPos(transform.position);
+            icons[0].SetScale(selectingScale);
 
             icons[1].SetPos(nextGameIconTransform.position);
+            icons[1].SetScale(nonSelectingScale);
 
             icons[lastIndex].SetPos(prevGameIconTransform.position);
+            icons[lastIndex].SetScale(nonSelectingScale);
 
             for (var i = 1; i < lastIndex; ++i)
             {

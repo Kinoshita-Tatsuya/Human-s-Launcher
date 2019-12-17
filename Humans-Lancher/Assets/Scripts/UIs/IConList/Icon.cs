@@ -10,8 +10,9 @@ namespace HumansLancher.UIs.IconList
     {
         [SerializeField] float scale = 1.0f;
 
-        public event Action<Icon> OnAnimStarted;
-        public event Action<Icon> OnAnimEnded;
+        public event Action<Icon> OnScalingDownStarted;
+        public event Action<Icon> OnScalingDownEnded;
+        public event Action<Icon> OnScalingUpCompleted;
 
         public static Icon Instantiate(Icon prefab, string name, Sprite sprite, AbstractExecutable executable)
         {
@@ -47,6 +48,11 @@ namespace HumansLancher.UIs.IconList
         public void Animate(string triggerName)
         {
             animator.SetTrigger(triggerName);
+        }
+
+        public void SetScale(Vector3 scale)
+        {
+            transform.localScale = scale;
         }
 
         void CoordinateScale(Vector2 spriteSize)
