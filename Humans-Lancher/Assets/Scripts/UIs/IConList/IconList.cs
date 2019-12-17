@@ -20,14 +20,20 @@ namespace HumansLancher.UIs.IconList
             IGameDataDAO gameDataDAO = new GameDataDAO();
             var gameDatas = gameDataDAO.GetGameDatas();
 
-            foreach (var gameData in gameDatas)
-            {
-                ISpriteFactory spriteFactory = new SpriteFactory();
-                var sprite = spriteFactory.Create(gameData.TexturePath, defaultSprite);
-                AbstractExecutable executable = new Executable(gameData.ExePath);
+            // Iconの数が三つ以下の場合に余分にアイコンを作る
+            var addtionalInstanceLoopCount = gameDatas.Count < 3 ? 3 : 1;
 
-                var icon = Icon.Instantiate(iconPrefab, gameData.Title, sprite, executable);
-                icons.Add(icon);
+            for (var i = 0; i < addtionalInstanceLoopCount; ++i)
+            {
+                foreach (var gameData in gameDatas)
+                {
+                    ISpriteFactory spriteFactory = new SpriteFactory();
+                    var sprite = spriteFactory.Create(gameData.TexturePath, defaultSprite);
+                    AbstractExecutable executable = new Executable(gameData.ExePath);
+
+                    var icon = Icon.Instantiate(iconPrefab, gameData.Title, sprite, executable);
+                    icons.Add(icon);
+                }
             }
 
             iconLocator.InitPos(icons);
@@ -46,7 +52,7 @@ namespace HumansLancher.UIs.IconList
         {
             get
             {
-                if (icons.Count < 0)
+                if (icons.Count < 1)
                 {
                     return null;
                 }

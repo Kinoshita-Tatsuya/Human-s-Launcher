@@ -14,6 +14,21 @@ namespace HumansLancher.UIs.IconList
         public event Action<Icon> OnScalingDownEnded;
         public event Action<Icon> OnScalingUpCompleted;
 
+        public void IgniteOnScalingDownStarted()
+        {
+            OnScalingDownStarted?.Invoke(this);
+        }
+        
+        public void IgniteOnScalingDownEnded()
+        {
+            OnScalingDownEnded?.Invoke(this);
+        }
+
+        public void IgniteOnScalingUpCompleted()
+        {
+            OnScalingUpCompleted?.Invoke(this);
+        }
+
         public static Icon Instantiate(Icon prefab, string name, Sprite sprite, AbstractExecutable executable)
         {
             var icon = Instantiate(prefab) as Icon;

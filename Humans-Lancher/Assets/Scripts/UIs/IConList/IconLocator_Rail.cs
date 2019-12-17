@@ -61,9 +61,11 @@ namespace HumansLancher.UIs.IconList
 
         public void AnimateIcons(List<Icon> icons)
         {
-            for (var i = 0; i < icons.Count; ++i)
+            icons[0].Animate("Scaling_L");
+
+            for (var i = 1; i < icons.Count; ++i)
             {
-                icons[i].Animate("Scaling");
+                icons[i].Animate("Scaling_S");
             }
         }
 
