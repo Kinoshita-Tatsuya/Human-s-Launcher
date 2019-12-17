@@ -24,7 +24,7 @@ namespace HumansLancher.UIs.IconList
             icons[lastIndex].SetPos(prevGameIconTransform.position);
             icons[lastIndex].SetScale(nonSelectingScale);
 
-            for (var i = 1; i < lastIndex; ++i)
+            for (var i = 2; i < lastIndex; ++i)
             {
                 icons[i].SetPos(posOutOfWindow);
             }
@@ -32,9 +32,11 @@ namespace HumansLancher.UIs.IconList
 
         public void ToNext(List<Icon> icons)
         {
-            if (icons.Count > 0)
+            if (icons.Count > 1)
             {
                 translateVec = TRANSLATE_VEC.LEFT;
+
+                AnimateIcons(icons);
             }
             else
             {
@@ -44,9 +46,11 @@ namespace HumansLancher.UIs.IconList
 
         public void ToPrev(List<Icon> icons)
         {
-            if (icons.Count > 0)
+            if (icons.Count > 1)
             {
                 translateVec = TRANSLATE_VEC.RIGHT;
+
+                AnimateIcons(icons);
             }
             else
             {

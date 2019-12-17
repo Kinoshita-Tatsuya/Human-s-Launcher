@@ -15,7 +15,9 @@ namespace HumansLancher.UIs.IconList
 
         void Start()
         {
-            iconLocator = GameObject.Find("IconLocator").GetComponent<IconLocator_rail>();
+            var iconLocator_rail = GameObject.Find("IconLocator");
+
+            iconLocator = iconLocator_rail.GetComponent<IconLocator_rail>();
 
             IGameDataDAO gameDataDAO = new GameDataDAO();
             var gameDatas = gameDataDAO.GetGameDatas();

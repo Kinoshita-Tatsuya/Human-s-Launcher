@@ -8,8 +8,6 @@ namespace HumansLancher.UIs.IconList
     [RequireComponent(typeof(Sprite), typeof(Animator))]
     public class Icon : MonoBehaviour
     {
-        [SerializeField] float scale = 1.0f;
-
         public event Action<Icon> OnScalingDownStarted;
         public event Action<Icon> OnScalingDownEnded;
         public event Action<Icon> OnScalingUpCompleted;
@@ -39,7 +37,6 @@ namespace HumansLancher.UIs.IconList
             var renderer = icon.GetComponent<SpriteRenderer>();
 
             renderer.sprite = sprite;
-            icon.CoordinateScale(renderer.bounds.size);
 
             icon.animator = icon.GetComponent<Animator>();
 
@@ -68,13 +65,6 @@ namespace HumansLancher.UIs.IconList
         public void SetScale(Vector3 scale)
         {
             transform.localScale = scale;
-        }
-
-        void CoordinateScale(Vector2 spriteSize)
-        {            
-            Vector2 normalizedScale = new Vector2(1.0f / spriteSize.x, 1.0f / spriteSize.y);
-
-            transform.localScale = new Vector2(normalizedScale.x * scale, normalizedScale.y * scale);
         }
 
         Animator animator;
