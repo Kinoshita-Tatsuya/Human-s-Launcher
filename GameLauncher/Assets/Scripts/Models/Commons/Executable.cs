@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using UnityEditor;
 
 namespace GameLauncher.Models.Commons
@@ -43,7 +44,10 @@ namespace GameLauncher.Models.Commons
         {
             Process = new Process();
 
-            Process.StartInfo.FileName = ExePath;
+            // ProcessのFileNameにパスを入れて起動する際は絶対パスがいる
+            var fullPath = Path.GetFullPath(ExePath);
+
+            Process.StartInfo.FileName = fullPath;
             Process.EnableRaisingEvents = true;
             Process.Exited += EndProcess;
 

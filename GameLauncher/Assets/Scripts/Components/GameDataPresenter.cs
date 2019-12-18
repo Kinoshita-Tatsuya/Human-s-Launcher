@@ -67,11 +67,11 @@ namespace GameLauncher.Components
             IconsAnimBehavior.ToSelectingPrev();
         }
 
-        private void UpdateText(int selectingIndex)
+        private void UpdateText(int index)
         {
-            TitleText.text = GameDatas[selectingIndex]?.Title;
-            GenreText.text = GameDatas[selectingIndex]?.Genre;
-            SummaryText.text = GameDatas[selectingIndex]?.Summary;
+            TitleText.text = GameDatas[index]?.Title;
+            GenreText.text = GameDatas[index]?.Genre;
+            SummaryText.text = GameDatas[index]?.Summary;
         }
 
         private IIconsAnimBehavior IconsAnimBehavior { get; set; }

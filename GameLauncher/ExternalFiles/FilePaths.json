@@ -13,7 +13,7 @@
     {
       "Title": "ChargeSHOT",
       "Genre": "2Dタイミング・シューティング",
-      "ExePath": "ExternalFiles/ChargeSHOT/ChargeShot.lnk",
+      "ExePath": "ExternalFiles/ChargeSHOT/ChargeShot.exe.lnk",
       "TexturePath": "ExternalFiles/ChargeSHOT/Icon.png",
       "DescriptionPath": "",
       "Summary": "動く隙間の間にエネルギー弾を通そう！\n弾と隙間の大きさが近いほど得点アップ！\nしかし少しでも壁にぶつかると\nミスとなり得点は得られないぞ！\n全弾数20発 ハイスコアを目指せ！\n\nEnterキーを長押し : エネルギーチャージ\nEnterキーを離す : エネルギー弾発射\nBackSpaceキー : 初めからやり直す"
