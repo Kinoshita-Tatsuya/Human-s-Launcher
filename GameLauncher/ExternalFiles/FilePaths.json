@@ -1,0 +1,46 @@
+{
+  "書式説明" : [
+    {
+      "Title": "ゲームタイトル",
+      "Genre": "ゲームのジャンルやサブタイトルなどを入れる文字列",
+      "ExePath": "実行ファイルのショートカットのパス(例:　Foo/Bar.exe.Lnk or Foo\\Bar.exe.Lnk",
+      "TexturePath": "ランチャー内で表示するアイコンのパス サイズは512*512にすること",
+      "DescriptionPath": "ゲームの説明書きPDFのパス",
+      "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+    }
+  ],
+  "FilePaths": [
+    {
+      "Title": "ChargeSHOT",
+      "Genre": "2Dタイミング・シューティング",
+      "ExePath": "ExternalFiles/ChargeSHOT/ChargeShot.lnk",
+      "TexturePath": "ExternalFiles/ChargeSHOT/Icon.png",
+      "DescriptionPath": "",
+      "Summary": "動く隙間の間にエネルギー弾を通そう！\n弾と隙間の大きさが近いほど得点アップ！\nしかし少しでも壁にぶつかると\nミスとなり得点は得られないぞ！\n全弾数20発 ハイスコアを目指せ！\n\nEnterキーを長押し : エネルギーチャージ\nEnterキーを離す : エネルギー弾発射\nBackSpaceキー : 初めからやり直す"
+    },
+    {
+      "Title": "Hello World!!",
+      "Genre": "ゲームのジャンルやサブタイトルなどを入れる文字列",
+      "ExePath": "../README.md",
+      "TexturePath": "",
+      "DescriptionPath": "",
+      "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+    },
+    {
+      "Title": "FF14_Bench",
+      "Genre": "BenchMark",
+      "ExePath": "",
+      "TexturePath": "",
+      "DescriptionPath": "",
+      "Summary": "FF14"
+    },
+    {
+      "Title": "Nothing",
+      "Genre": "ゲームのジャンルやサブタイトルなどを入れる文字列",
+      "ExePath": "",
+      "TexturePath": "",
+      "DescriptionPath": "",
+      "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+    }
+  ]
+}                 

@@ -4,9 +4,9 @@
     {
         public static JsonNode Get()
         {
-            return JsonLoader.LoadJson(JSON_FILE_PATH)["FilePaths"];               
+            return JsonLoader.LoadJson(JSON_FILE_PATH)["FilePaths"]; 
         }
 
-        private const string JSON_FILE_PATH = "FilePaths.json";
+        private const string JSON_FILE_PATH = "ExternalFiles/FilePaths.json";
     }
 }

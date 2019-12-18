@@ -48,6 +48,8 @@ namespace GameLauncher.Components
                 nonSelectingTransform);
 
             IconsAnimBehavior.OnSelectingChanged += UpdateText;
+
+            UpdateText(0);
         }
 
         public void ExecuteSelecting()
