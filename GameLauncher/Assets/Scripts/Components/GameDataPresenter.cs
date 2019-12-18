@@ -1,9 +1,11 @@
-﻿using GameLauncher.Models.DomainObjects;
+﻿using GameLauncher.Components.FlexibleAnimator;
+using GameLauncher.Models.DomainObjects;
 using GameLauncher.Models.RelateIcon;
 using GameLauncher.Models.RelateIcon.IconsAnimBehavior;
 using GameLauncher.Models.Services;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GameLauncher.Components
 {
@@ -17,6 +19,9 @@ namespace GameLauncher.Components
         [SerializeField] private RectTransform nextTransform = null;
         [SerializeField] private RectTransform nextFramTransform = null;
         [SerializeField] private RectTransform nonSelectingTransform = null;
+        [SerializeField] private Text TitleText = null;
+        [SerializeField] private Text GenreText = null;
+        [SerializeField] private Text SummaryText = null;
 
         public void Start()
         {
@@ -32,7 +37,6 @@ namespace GameLauncher.Components
             }
 
             var iconList = new IconList(icons);
-
             IconsAnimBehavior = new IconsAnimBehavior_3Box(
                 iconList,
                 selectingTransform,
@@ -42,6 +46,9 @@ namespace GameLauncher.Components
                 nextTransform,
                 nextFramTransform,
                 nonSelectingTransform);
+
+            var iconAnimator = iconList.Selecting.GetComponent<IconFlexibleAnimator>();
+            iconAnimator.OnAnimationMiddlePassed += UpdateText;
         }
 
         public void ExecuteSelecting()
@@ -57,6 +64,15 @@ namespace GameLauncher.Components
         public void ToSelectingPrev()
         {
             IconsAnimBehavior.ToSelectingPrev();
+        }
+
+        private void UpdateText()
+        {
+            var selectingIndex = IconsAnimBehavior.IconList.SelectingIndex;
+
+            TitleText.text = GameDatas[selectingIndex]?.Title;
+            GenreText.text = GameDatas[selectingIndex]?.Genre;
+            SummaryText.text = GameDatas[selectingIndex]?.Summary;
         }
 
         private IIconsAnimBehavior IconsAnimBehavior { get; set; }
