@@ -57,7 +57,7 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-Humans-Lancher/Library/
-Humans-Lancher/Logs/
-Humans-Lancher/obj/
-Humans-Lancher/Temp/
+GameLauncher/Library/
+GameLauncher/Logs/
+GameLauncher/obj/
+GameLauncher/Temp/
