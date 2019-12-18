@@ -7,6 +7,6 @@
             return JsonLoader.LoadJson(JSON_FILE_PATH)["FilePaths"];               
         }
 
-        private const string JSON_FILE_PATH = "Assets/Resources/FilePaths.json";
+        private const string JSON_FILE_PATH = "FilePaths.json";
     }
 }

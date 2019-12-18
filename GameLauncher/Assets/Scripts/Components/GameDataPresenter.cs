@@ -28,7 +28,7 @@ namespace GameLauncher.Components
 
             foreach (var gameData in GameDatas)
             {
-                icons.Add(Icon.Instantiate(iconPrefab, canvas, gameData.Sprite, iconPrefab.Executable));
+                icons.Add(Icon.Instantiate(iconPrefab, canvas, gameData.Sprite, gameData.ExeAsExecutable));
             }
 
             var iconList = new IconList(icons);

@@ -1,0 +1,41 @@
+{
+  "書式説明" : [
+    {
+    "Title": "ゲームタイトル",
+    "ExePath": "実行ファイルのショートカットのパス(例:　Foo/Bar.exe.Lnk or Foo\\Bar.exe.Lnk",
+    "TexturePath": "ランチャー内で表示するアイコンのパス サイズは512*512にすること",
+    "DescriptionPath": "ゲームの説明書きPDFのパス",
+    "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+    }
+  ],
+  "FilePaths": [
+    {
+      "Title": "Chuage shot",
+      "ExePath": "C:/Users/tatsu/Desktop/StarLight_Line/StarLight_Line/StarLight_Line.exe.lnk",
+      "TexturePath": "C:/Users/shuny_000/source/Human-s-Launcher/GameLauncher/Assets/Resources/Icon_ChargeShot_0.png",
+      "DescriptionPath": "",
+      "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+    },
+    {
+      "Title": "a",
+      "ExePath": "../README.md",
+      "TexturePath": "C:/Users/shuny_000/source/Human-s-Launcher/GameLauncher/Assets/Resources/Launcher.png",
+      "DescriptionPath": "",
+      "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+    },
+    {
+      "Title": "FF14_Bench",
+      "ExePath": "C:/Users/shuny_000/Documents/My Games/FFXIV-ARR-Bench-Character/ffxiv-arr-bench-character.exe",
+      "TexturePath": "C:/Users/shuny_000/Documents/My Games/FFXIV-ARR-Bench-Character/launcher/asset/ja/logo.png",
+      "DescriptionPath": ""
+      "Summary": "簡易説明　HTMLの装飾タグ使用可能",
+    },
+    {
+      "Title": "c",
+      "ExePath": "",
+      "TexturePath": "C:/Users/shuny_000/Pictures/city.jpg",
+      "DescriptionPath": "",
+      "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+    }
+  ]
+}                 
