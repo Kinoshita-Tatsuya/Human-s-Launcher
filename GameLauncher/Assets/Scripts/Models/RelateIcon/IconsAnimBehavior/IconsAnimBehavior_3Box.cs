@@ -1,4 +1,5 @@
 using GameLauncher.Components.FlexibleAnimator;
+using System;
 using UnityEngine;
 
 namespace GameLauncher.Models.RelateIcon.IconsAnimBehavior
@@ -32,6 +33,11 @@ namespace GameLauncher.Models.RelateIcon.IconsAnimBehavior
 
             InitPos();
         }
+
+        /// <summary>
+        /// 選択されているアイコンが変わった時に呼ばれる 引数は新しく選択されたIconのインデックス
+        /// </summary>
+        public event Action<int> OnSelectingChanged;
 
         public RectTransform SelectingTransform { get; private set; }
         public RectTransform SelectingFrameTransform { get; private set; }
@@ -173,6 +179,8 @@ namespace GameLauncher.Models.RelateIcon.IconsAnimBehavior
             TranslateVec = TRANSLATE_VEC.NEUTRAL;
 
             InitPos();
+
+            OnSelectingChanged?.Invoke(IconList.SelectingIndex);
         }
 
         private void StartAnimation()

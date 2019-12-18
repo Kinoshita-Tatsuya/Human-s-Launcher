@@ -47,8 +47,7 @@ namespace GameLauncher.Components
                 nextFramTransform,
                 nonSelectingTransform);
 
-            var iconAnimator = iconList.Selecting.GetComponent<IconFlexibleAnimator>();
-            iconAnimator.OnAnimationMiddlePassed += UpdateText;
+            IconsAnimBehavior.OnSelectingChanged += UpdateText;
         }
 
         public void ExecuteSelecting()
@@ -66,10 +65,8 @@ namespace GameLauncher.Components
             IconsAnimBehavior.ToSelectingPrev();
         }
 
-        private void UpdateText()
+        private void UpdateText(int selectingIndex)
         {
-            var selectingIndex = IconsAnimBehavior.IconList.SelectingIndex;
-
             TitleText.text = GameDatas[selectingIndex]?.Title;
             GenreText.text = GameDatas[selectingIndex]?.Genre;
             SummaryText.text = GameDatas[selectingIndex]?.Summary;
