@@ -22,6 +22,9 @@ namespace GameLauncher.Components
         [SerializeField] private Text TitleText = null;
         [SerializeField] private Text GenreText = null;
         [SerializeField] private Text SummaryText = null;
+        [SerializeField] private Text ToNextText = null;
+        [SerializeField] private Text ToPrevText = null;
+        [SerializeField] private Text GameNumText = null;
 
         public void Start()
         {
@@ -36,9 +39,9 @@ namespace GameLauncher.Components
                 icons.Add(Icon.Instantiate(iconPrefab, canvas, gameData.Sprite, gameData.ExeAsExecutable));
             }
 
-            var iconList = new IconList(icons);
+            IconList = new IconList(icons);
             IconsAnimBehavior = new IconsAnimBehavior_3Box(
-                iconList,
+                IconList,
                 selectingTransform,
                 selectingFrameTransform,
                 prevTransform,
@@ -48,8 +51,10 @@ namespace GameLauncher.Components
                 nonSelectingTransform);
 
             IconsAnimBehavior.OnSelectingChanged += UpdateText;
+            IconsAnimBehavior.OnSelectingChanged += (_) => { ToggleColorIconExistence(); };
 
             UpdateText(0);
+            ToggleColorIconExistence();
         }
 
         public void ExecuteSelecting()
@@ -72,8 +77,32 @@ namespace GameLauncher.Components
             TitleText.text = GameDatas[index]?.Title;
             GenreText.text = GameDatas[index]?.Genre;
             SummaryText.text = GameDatas[index]?.Summary;
+            GameNumText.text = (index+1).ToString() + "／" + IconList.Icons.Count.ToString();
         }
 
+        private void ToggleColorIconExistence()
+        {
+            ToNextText.color = ToPrevText.color = Color.white;
+
+            var nextIndex = IconList.SelectingIndex + 1;
+            var existsNext = nextIndex <= IconList.Icons.Count-1;
+
+            if (!existsNext)
+            {
+                ToNextText.color = Color.gray;
+            }
+
+            var prevIndex = IconList.SelectingIndex - 1;
+            var existsPrev = prevIndex >= 0;
+
+            if (!existsPrev)
+            {
+                ToPrevText.color = Color.gray;
+            }
+
+        }
+
+        private IconList IconList { get; set; }
         private IIconsAnimBehavior IconsAnimBehavior { get; set; }
         List<GameData> GameDatas { get; set; }
     }

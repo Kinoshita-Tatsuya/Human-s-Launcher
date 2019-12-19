@@ -30,7 +30,13 @@ namespace GameLauncher.Infrastructures
 
                 return null;
             }
+            catch (DirectoryNotFoundException e)
+            {
+                EditorUtility.DisplayDialog("❌Error", "ファイルパスに間違いがあります。\n" + e.Message, "OK");
 
+                return null;
+
+            }
         }
     }
 }

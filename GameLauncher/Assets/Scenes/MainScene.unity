@@ -971,7 +971,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u24B6 / Enter\u30AD\u30FC : \u8D77\u52D5"
+  m_Text: "\u24B7 / Enter\u30AD\u30FC : \u8D77\u52D5"
 --- !u!222 &596866492
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1739,7 +1739,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u24B7 / E\u30AD\u30FC : \u8A73\u7D30\u8AAC\u660E "
+  m_Text: "\u24CE / E\u30AD\u30FC : \u8A73\u7D30\u8AAC\u660E "
 --- !u!222 &1228546469
 CanvasRenderer:
   m_ObjectHideFlags: 0
