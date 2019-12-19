@@ -13,10 +13,10 @@ namespace GameLauncher.Models.Services
 
             foreach (var folderName in GameListDAO.Get()) 
             {               
-                var exeAsExecutable = new Executable(CreateExePath(folderName));
-                var sprite = SpriteFactory.Create(CreateTexturePath(folderName));
-                var descriptionAsExecutable = new Executable(CreateDescriptionPath(folderName));
-                var summary = TextFileLoader.GetAllLine(CreateSummaryPath(folderName));
+                var exeAsExecutable = new Executable(folderName + "/Exe.lnk");
+                var sprite = SpriteFactory.Create(folderName + "/Icon.png");
+                var descriptionAsExecutable = new Executable(folderName + "/Description.pdf");
+                var summary = TextFileLoader.GetAllLine(folderName + "/Summary.txt");
 
                 var data = new GameData(
                     "",
@@ -30,28 +30,6 @@ namespace GameLauncher.Models.Services
             }
 
             return gameDatas;
-        }
-
-        private static string CreateExePath(string folderName)
-        {
-            return EXTERNAL_FILE_PATH + folderName + "/Exe.lnk";
-        }
-
-        private static string CreateTexturePath(string folderName)
-        {
-            return EXTERNAL_FILE_PATH + folderName + "/Icon.png";
-        }
-
-        private static string CreateDescriptionPath(string folderName)
-        {
-            return EXTERNAL_FILE_PATH + folderName + "/Description.pdf";
-        }
-
-        private static string CreateSummaryPath(string folderName)
-        {
-            return EXTERNAL_FILE_PATH + folderName + "/Summary.txt";
-        }
-
-        private const string EXTERNAL_FILE_PATH = "ExternalFiles/";
+        }        
     }    
 }
