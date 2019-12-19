@@ -16,7 +16,7 @@ namespace GameLauncher.Models.Services
                 var exeAsExecutable = new Executable(path["ExePath"].Get<string>());
                 var sprite = SpriteFactory.Create(path["TexturePath"].Get<string>());
                 var descriptionAsExecutable = new Executable(path["ExePath"].Get<string>());
-                var summary = GameDataDAO.Get(path["Summary"].Get<string>());
+                var summary = GameDataDAO.Get(path["SummaryPath"].Get<string>());
 
                 var data = new GameData(
                     path["Title"].Get<string>(),

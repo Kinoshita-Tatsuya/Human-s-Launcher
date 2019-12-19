@@ -6,7 +6,7 @@
       "ExePath": "実行ファイルのショートカットのパス(例:　Foo/Bar.exe.Lnk or Foo\\Bar.exe.Lnk",
       "TexturePath": "ランチャー内で表示するアイコンのパス サイズは512*512にすること",
       "DescriptionPath": "ゲームの説明書きPDFのパス",
-      "Summary": "簡易説明 改行は\n　全角250文字まで HTMLの装飾タグ使用可能(https://docs.unity3d.com/jp/460/Manual/StyledText.html)"
+      "SummaryPath": "簡易説明 改行は\n　全角250文字まで HTMLの装飾タグ使用可能(https://docs.unity3d.com/jp/460/Manual/StyledText.html)"
     }
   ],
   "FilePaths": [
@@ -16,7 +16,7 @@
       "ExePath": "ExternalFiles/ChargeSHOT/ChargeShot.exe.lnk",
       "TexturePath": "ExternalFiles/ChargeSHOT/Icon.png",
       "DescriptionPath": "",
-      "Summary": "ExternalFiles/ChargeSHOT/Summary.txt"
+      "SummaryPath": "ExternalFiles/ChargeSHOT/Summary.txt"
     },
     {
       "Title": "Hello World!!",
@@ -24,7 +24,7 @@
       "ExePath": "../README.md",
       "TexturePath": "",
       "DescriptionPath": "",
-      "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+      "SummaryPath": "簡易説明　HTMLの装飾タグ使用可能"
     },
     {
       "Title": "FF14_Bench",
@@ -32,7 +32,7 @@
       "ExePath": "",
       "TexturePath": "",
       "DescriptionPath": "",
-      "Summary": "FF14"
+      "SummaryPath": "FF14"
     },
     {
       "Title": "Nothing",
@@ -40,7 +40,7 @@
       "ExePath": "",
       "TexturePath": "",
       "DescriptionPath": "",
-      "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+      "SummaryPath": "簡易説明　HTMLの装飾タグ使用可能"
     }
   ]
 }                 
