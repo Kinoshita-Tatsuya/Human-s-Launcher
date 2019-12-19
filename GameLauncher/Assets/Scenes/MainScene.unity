@@ -485,6 +485,9 @@ MonoBehaviour:
   TitleText: {fileID: 433184959}
   GenreText: {fileID: 315839974}
   SummaryText: {fileID: 1709579149}
+  ToNextText: {fileID: 905111032}
+  ToPrevText: {fileID: 151821877}
+  GameNumText: {fileID: 363361178}
 --- !u!224 &241665492
 RectTransform:
   m_ObjectHideFlags: 0
