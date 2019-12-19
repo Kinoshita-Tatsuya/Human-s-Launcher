@@ -11,25 +11,33 @@ namespace GameLauncher.Components
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow) || 
-                Input.GetKeyDown(KeyCode.D))                
+            if (Input.GetAxis("Submit") > 0)
+            {
+                GameDataPresenter.ExecuteSelecting();
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            ToggleCanAnimation();
+
+            if (!CanAnimation) return;
+            if (Input.GetAxis("Horizontal") > 0)
             {
                 GameDataPresenter.ToSelectingNext();
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || 
-                Input.GetKeyDown(KeyCode.A))
+            if (Input.GetAxis("Horizontal") < 0)
             {
                 GameDataPresenter.ToSelectingPrev();
             }
+        }
+        private bool CanAnimation { get; set; } = false;
+        private bool ToggleCanAnimation()
+        {
+            return CanAnimation = !CanAnimation;
+        }
 
-            if(Input.GetKeyDown(KeyCode.Return) || 
-               Input.GetKeyDown("joystick button 1"))
-            {
-                GameDataPresenter.ExecuteSelecting();
-            }
-        }    
-        
         private GameDataPresenter GameDataPresenter { get; set; }
     }
 }
