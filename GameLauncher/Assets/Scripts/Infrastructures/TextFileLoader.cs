@@ -4,10 +4,9 @@ using UnityEditor;
 
 namespace GameLauncher.Infrastructures
 {
-
     public static class TextFileLoader
     {
-        public static string Get(string path)
+        public static string GetAllLine(string path)
         {
             try
             {
@@ -33,5 +32,5 @@ namespace GameLauncher.Infrastructures
 
             }
         }
-    }       
+    }      
 }

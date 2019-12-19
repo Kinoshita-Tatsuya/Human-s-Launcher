@@ -11,16 +11,16 @@ namespace GameLauncher.Models.Services
         {
             var gameDatas = new List<GameData>();
 
-            foreach (var path in GameDataDAO.Get())
-            {
-                var exeAsExecutable = new Executable(path["ExePath"].Get<string>());
-                var sprite = SpriteFactory.Create(path["TexturePath"].Get<string>());
-                var descriptionAsExecutable = new Executable(path["ExePath"].Get<string>());
-                var summary = GameDataDAO.Get(path["SummaryPath"].Get<string>());
+            foreach (var folderName in GameListDAO.Get()) 
+            {               
+                var exeAsExecutable = new Executable(CreateExePath(folderName));
+                var sprite = SpriteFactory.Create(CreateTexturePath(folderName));
+                var descriptionAsExecutable = new Executable(CreateDescriptionPath(folderName));
+                var summary = TextFileLoader.GetAllLine(CreateSummaryPath(folderName));
 
                 var data = new GameData(
-                    path["Title"].Get<string>(),
-                    path["Genre"].Get<string>(),
+                    "",
+                    "",
                     summary,
                     exeAsExecutable,
                     sprite,
@@ -31,5 +31,27 @@ namespace GameLauncher.Models.Services
 
             return gameDatas;
         }
-    }
+
+        private static string CreateExePath(string folderName)
+        {
+            return EXTERNAL_FILE_PATH + folderName + "/Exe.lnk";
+        }
+
+        private static string CreateTexturePath(string folderName)
+        {
+            return EXTERNAL_FILE_PATH + folderName + "/Icon.png";
+        }
+
+        private static string CreateDescriptionPath(string folderName)
+        {
+            return EXTERNAL_FILE_PATH + folderName + "/Description.pdf";
+        }
+
+        private static string CreateSummaryPath(string folderName)
+        {
+            return EXTERNAL_FILE_PATH + folderName + "/Summary.txt";
+        }
+
+        private const string EXTERNAL_FILE_PATH = "ExternalFiles/";
+    }    
 }

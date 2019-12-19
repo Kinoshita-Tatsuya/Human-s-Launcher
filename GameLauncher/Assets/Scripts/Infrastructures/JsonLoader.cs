@@ -6,7 +6,7 @@ namespace GameLauncher.Infrastructures
     {        
         public static JsonNode LoadJson(string jsonFilePath)
         {
-            var jsonText = TextFileLoader.Get(jsonFilePath);
+            var jsonText = TextFileLoader.GetAllLine(jsonFilePath);
 
             return JsonNode.Parse(jsonText);
         }
