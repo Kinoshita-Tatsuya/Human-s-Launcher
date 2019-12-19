@@ -2,11 +2,11 @@
   "書式説明" : [
     {
       "Title": "ゲームタイトル",
-      "Genre": "ゲームのジャンルやサブタイトルなどを入れる文字列",
+      "Genre": "ゲームのジャンルやサブタイトルなどを入れる文字列 全角19文字まで",
       "ExePath": "実行ファイルのショートカットのパス(例:　Foo/Bar.exe.Lnk or Foo\\Bar.exe.Lnk",
       "TexturePath": "ランチャー内で表示するアイコンのパス サイズは512*512にすること",
       "DescriptionPath": "ゲームの説明書きPDFのパス",
-      "Summary": "簡易説明　HTMLの装飾タグ使用可能"
+      "Summary": "簡易説明 改行は\n　全角250文字まで HTMLの装飾タグ使用可能(https://docs.unity3d.com/jp/460/Manual/StyledText.html)"
     }
   ],
   "FilePaths": [
