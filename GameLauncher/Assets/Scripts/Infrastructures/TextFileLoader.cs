@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using UnityEditor;
 
 namespace GameLauncher.Infrastructures
@@ -31,6 +32,6 @@ namespace GameLauncher.Infrastructures
                 return e.Message;
 
             }
-        }
+        }        
     }      
 }
