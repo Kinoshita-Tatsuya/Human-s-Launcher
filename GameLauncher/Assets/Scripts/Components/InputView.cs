@@ -32,15 +32,25 @@ namespace GameLauncher.Components
             ToggleCanAnimation();
 
             if (!CanAnimation) return;
-            if (Input.GetAxis("Horizontal") > 0)
+            if (Input.GetAxis("Vertical") < 0)
             {
                 GameDataPresenter.ToSelectingNext();
             }
 
-            if (Input.GetAxis("Horizontal") < 0)
+            if (Input.GetAxis("Vertical") > 0)
             {
                 GameDataPresenter.ToSelectingPrev();
             }
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                //GameDataPresenter.ToSelectingNext();
+            }
+
+            if (Input.GetAxis("Horizontal") < 0)
+            {
+                //GameDataPresenter.ToSelectingPrev();
+            }
+
         }
         private bool CanAnimation { get; set; } = false;
         private bool ToggleCanAnimation()
