@@ -22,6 +22,7 @@ namespace GameLauncher.Components
             if (Input.GetAxis("Discription") > 0)
             {
                 //詳細表示
+                GameDataPresenter.ExecuteDiscription();
             }
 
         }

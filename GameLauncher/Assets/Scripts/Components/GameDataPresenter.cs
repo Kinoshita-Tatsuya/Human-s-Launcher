@@ -62,6 +62,12 @@ namespace GameLauncher.Components
             IconsAnimBehavior.ExecuteSelecting();
         }
 
+        public void ExecuteDiscription()
+        {
+            var index = IconsAnimBehavior.IconList.SelectingIndex;
+            GameDatas[index].DescriptionAsExecutable.Execute();
+        }
+
         public void ToSelectingNext()
         {
             IconsAnimBehavior.ToSelectingNext();
