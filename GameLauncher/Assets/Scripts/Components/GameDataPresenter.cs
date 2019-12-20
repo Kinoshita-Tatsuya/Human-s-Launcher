@@ -12,6 +12,7 @@ namespace GameLauncher.Components
     public class GameDataPresenter : MonoBehaviour
     {
         [SerializeField] private Icon iconPrefab = null;
+        [SerializeField] private HeartButton heartButton = null;
         [SerializeField] private RectTransform selectingTransform = null;
         [SerializeField] private RectTransform selectingFrameTransform = null;
         [SerializeField] private RectTransform prevTransform = null;
@@ -25,6 +26,7 @@ namespace GameLauncher.Components
         [SerializeField] private Text SummaryText = null;
         [SerializeField] private Text ToNextText = null;
         [SerializeField] private Text ToPrevText = null;
+        [SerializeField] private Text HeartNumText = null;
 
         public void Start()
         {
@@ -36,7 +38,7 @@ namespace GameLauncher.Components
 
             foreach (var gameData in GameDatas)
             {
-                icons.Add(Icon.Instantiate(iconPrefab, canvas, gameData.Sprite, gameData.ExeAsExecutable));
+                icons.Add(Icon.Instantiate(iconPrefab, canvas, gameData.Sprite, gameData.ExeAsExecutable));                
             }
 
             IconList = new IconList(icons);
@@ -63,9 +65,8 @@ namespace GameLauncher.Components
         }
 
         public void ExecuteDiscription()
-        {
-            var index = IconsAnimBehavior.IconList.SelectingIndex;
-            GameDatas[index].DescriptionAsExecutable.Execute();
+        {            
+            SelectingGameData?.DescriptionAsExecutable.Execute();
         }
 
         public void ToSelectingNext()
@@ -78,12 +79,25 @@ namespace GameLauncher.Components
             IconsAnimBehavior.ToSelectingPrev();
         }
 
+        public void IncreaseHeartNum()
+        {    
+            heartButton.IncreaseHeartNum(SelectingGameData?.Title);
+            UpdateHeartText();
+        }
+
         private void UpdateGameState(int index)
         {
-            TitleText.text = GameDatas[index]?.Title;
-            GenreText.text = GameDatas[index]?.Genre;
-            SummaryText.text = GameDatas[index]?.Summary;
-            TextBack.sprite = GameDatas[index]?.Sprite;
+            TitleText.text = SelectingGameData?.Title;
+            GenreText.text = SelectingGameData?.Genre;
+            SummaryText.text = SelectingGameData?.Summary;
+            TextBack.sprite = SelectingGameData?.Sprite;
+            UpdateHeartText();
+        }
+
+        private void UpdateHeartText()
+        {
+            var heartNum = heartButton.GetCurrentHeartNum(SelectingGameData?.Title);
+            HeartNumText.text = heartNum.ToString();
         }
 
         private void ToggleColorIconExistence()
@@ -110,6 +124,8 @@ namespace GameLauncher.Components
                 ToPrevText.color = Color.gray;
             }
         }
+
+        private GameData SelectingGameData => GameDatas[IconList.SelectingIndex];
 
         private IconList IconList { get; set; }
         private IIconsAnimBehavior IconsAnimBehavior { get; set; }

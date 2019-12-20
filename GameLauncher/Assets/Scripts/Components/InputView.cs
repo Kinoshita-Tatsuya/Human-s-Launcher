@@ -18,7 +18,7 @@ namespace GameLauncher.Components
             }
             if (Input.GetAxis("Heart") > 0)
             {
-                //ハートボタン押下
+                GameDataPresenter.IncreaseHeartNum();
             }
             if (Input.GetAxis("Discription") > 0)
             {
