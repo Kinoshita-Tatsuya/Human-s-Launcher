@@ -15,6 +15,15 @@ namespace GameLauncher.Components
             {
                 GameDataPresenter.ExecuteSelecting();
             }
+            if (Input.GetAxis("Heart") > 0)
+            {
+                //ハートボタン押下
+            }
+            if (Input.GetAxis("Discription") > 0)
+            {
+                //詳細表示
+            }
+
         }
 
         private void FixedUpdate()
