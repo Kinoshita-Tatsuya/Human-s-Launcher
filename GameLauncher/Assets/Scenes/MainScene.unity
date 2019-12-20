@@ -512,6 +512,7 @@ MonoBehaviour:
   nextTransform: {fileID: 1810336625}
   nextFramTransform: {fileID: 1554341184}
   nonSelectingTransform: {fileID: 1614401077}
+  TextBack: {fileID: 634217528}
   TitleText: {fileID: 433184959}
   GenreText: {fileID: 315839974}
   SummaryText: {fileID: 1709579149}
