@@ -27,12 +27,12 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.358
+    value: 0.368
   smoothness:
     overrideState: 0
     value: 0.2
   roundness:
-    overrideState: 0
+    overrideState: 1
     value: 1
   rounded:
     overrideState: 0
@@ -64,11 +64,11 @@ MonoBehaviour:
     overrideState: 1
     value: 1.44
   aperture:
-    overrideState: 1
-    value: 7.3
+    overrideState: 0
+    value: 7.5
   focalLength:
     overrideState: 1
-    value: 39
+    value: 133
   kernelSize:
     overrideState: 1
     value: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
     value: 0
   colorFilter:
     overrideState: 1
-    value: {r: 0.6588873, g: 0.6588873, b: 0.6588873, a: 1}
+    value: {r: 0.32941177, g: 0.32941177, b: 0.32941177, a: 1}
   hueShift:
     overrideState: 0
     value: 0

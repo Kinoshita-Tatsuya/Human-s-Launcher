@@ -24,7 +24,6 @@ namespace GameLauncher.Components
         [SerializeField] private Text SummaryText = null;
         [SerializeField] private Text ToNextText = null;
         [SerializeField] private Text ToPrevText = null;
-        [SerializeField] private Text GameNumText = null;
 
         public void Start()
         {
@@ -83,7 +82,6 @@ namespace GameLauncher.Components
             TitleText.text = GameDatas[index]?.Title;
             GenreText.text = GameDatas[index]?.Genre;
             SummaryText.text = GameDatas[index]?.Summary;
-            GameNumText.text = (index+1).ToString() + "／" + IconList.Icons.Count.ToString();
         }
 
         private void ToggleColorIconExistence()
