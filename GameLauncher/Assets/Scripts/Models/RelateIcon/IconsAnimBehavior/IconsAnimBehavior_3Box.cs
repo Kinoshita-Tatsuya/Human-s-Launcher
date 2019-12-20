@@ -60,11 +60,20 @@ namespace GameLauncher.Models.RelateIcon.IconsAnimBehavior
         {
             if (!CanExecute) return;
 
-            // 選ばれているインデックスのほうが次のインデックスより大きいまたは同じ場合
-            // ループしているということになる
-            if (IconList.SelectingIndex >= IconList.NextIndex)
+            var icons = IconList.Icons;
+
+            if (icons.Count > 2)
             {
-                return;
+
+            }
+            else
+            {
+                // 選ばれているインデックスのほうが次のインデックスより大きいまたは同じ場合
+                // ループしているということになる
+                if (IconList.SelectingIndex >= IconList.NextIndex)
+                {
+                    return;
+                }
             }
 
             TranslateVec = TRANSLATE_VEC.LEFT;
@@ -76,11 +85,20 @@ namespace GameLauncher.Models.RelateIcon.IconsAnimBehavior
         {
             if (!CanExecute) return;
 
-            // 選ばれているインデックスのほうが前のインデックスより小さいまたは同じ場合
-            // ループしているということになる
-            if (IconList.SelectingIndex <= IconList.PrevIndex)
+            var icons = IconList.Icons;
+
+            if (icons.Count > 2)
             {
-                return;
+
+            }
+            else
+            {
+                // 選ばれているインデックスのほうが前のインデックスより小さいまたは同じ場合
+                // ループしているということになる
+                if (IconList.SelectingIndex <= IconList.PrevIndex)
+                {
+                    return;
+                }
             }
 
             TranslateVec = TRANSLATE_VEC.RIGHT;
@@ -112,8 +130,10 @@ namespace GameLauncher.Models.RelateIcon.IconsAnimBehavior
             selectingFrameRectTransform.position = SelectingFrameTransform.position;
             selectingFrameRectTransform.sizeDelta = SelectingFrameTransform.sizeDelta;
 
-            var nextIndex = IconList.SelectingIndex + 1;
-            var existsNext = nextIndex <= lastIndex;
+            var canLooping = icons.Count > 2;
+
+            var nextIndex = canLooping ? IconList.NextIndex : IconList.SelectingIndex + 1;
+            var existsNext = canLooping ? true : nextIndex <= lastIndex;
 
             if (existsNext)
             {
@@ -126,8 +146,8 @@ namespace GameLauncher.Models.RelateIcon.IconsAnimBehavior
                 frameRectTransform.sizeDelta = NextFrameTransform.sizeDelta;
             }
 
-            var prevIndex = IconList.SelectingIndex - 1;
-            var existsPrev = prevIndex >= 0;
+            var prevIndex = canLooping ? IconList.PrevIndex : IconList.SelectingIndex - 1;
+            var existsPrev = canLooping ? true : prevIndex >= 0;
 
             if (existsPrev)
             {

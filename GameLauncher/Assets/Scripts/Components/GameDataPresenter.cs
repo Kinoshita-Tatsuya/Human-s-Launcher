@@ -90,16 +90,20 @@ namespace GameLauncher.Components
         {
             ToNextText.color = ToPrevText.color = Color.white;
 
-            var nextIndex = IconList.SelectingIndex + 1;
-            var existsNext = nextIndex <= IconList.Icons.Count-1;
+            var icons = IconList.Icons;
+
+            var canLooping = icons.Count > 2;
+
+            var nextIndex = canLooping ? IconList.NextIndex : IconList.SelectingIndex + 1;
+            var existsNext = canLooping ? true : nextIndex <= IconList.Icons.Count - 1;
 
             if (!existsNext)
             {
                 ToNextText.color = Color.gray;
             }
 
-            var prevIndex = IconList.SelectingIndex - 1;
-            var existsPrev = prevIndex >= 0;
+            var prevIndex = canLooping ? IconList.PrevIndex : IconList.SelectingIndex - 1;
+            var existsPrev = canLooping ? true : prevIndex >= 0;
 
             if (!existsPrev)
             {
