@@ -505,6 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconPrefab: {fileID: 6963777762870409387, guid: 0fdebf8abbd607142b51b50ad33209da,
     type: 3}
+  heartButton: {fileID: 0}
   selectingTransform: {fileID: 840497501206102336}
   selectingFrameTransform: {fileID: 7826261840648952175}
   prevTransform: {fileID: 1139563050}
@@ -2926,7 +2927,7 @@ GameObject:
   - component: {fileID: 1742521316}
   - component: {fileID: 1742521318}
   m_Layer: 5
-  m_Name: HartText
+  m_Name: HeartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
