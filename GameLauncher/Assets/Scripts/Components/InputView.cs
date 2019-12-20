@@ -7,6 +7,7 @@ namespace GameLauncher.Components
         private void Start()
         {
             GameDataPresenter = FindObjectOfType<GameDataPresenter>() as GameDataPresenter;
+            SelectingFrame = FindObjectOfType<SelectingFrame>() as SelectingFrame;
         }
 
         private void Update()
@@ -43,12 +44,12 @@ namespace GameLauncher.Components
             }
             if (Input.GetAxis("Horizontal") > 0)
             {
-                //GameDataPresenter.ToSelectingNext();
+                SelectingFrame.ToRight();
             }
 
             if (Input.GetAxis("Horizontal") < 0)
             {
-                //GameDataPresenter.ToSelectingPrev();
+                SelectingFrame.ToLeft();
             }
 
         }
@@ -59,5 +60,7 @@ namespace GameLauncher.Components
         }
 
         private GameDataPresenter GameDataPresenter { get; set; }
+        private SelectingFrame SelectingFrame { get; set; }
+
     }
 }
