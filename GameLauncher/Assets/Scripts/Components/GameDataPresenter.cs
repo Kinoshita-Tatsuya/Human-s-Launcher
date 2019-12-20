@@ -19,6 +19,7 @@ namespace GameLauncher.Components
         [SerializeField] private RectTransform nextTransform = null;
         [SerializeField] private RectTransform nextFramTransform = null;
         [SerializeField] private RectTransform nonSelectingTransform = null;
+        [SerializeField] private Image TextBack = null;
         [SerializeField] private Text TitleText = null;
         [SerializeField] private Text GenreText = null;
         [SerializeField] private Text SummaryText = null;
@@ -49,10 +50,10 @@ namespace GameLauncher.Components
                 nextFramTransform,
                 nonSelectingTransform);
 
-            IconsAnimBehavior.OnSelectingChanged += UpdateText;
+            IconsAnimBehavior.OnSelectingChanged += UpdateGameState;
             IconsAnimBehavior.OnSelectingChanged += (_) => { ToggleColorIconExistence(); };
 
-            UpdateText(0);
+            UpdateGameState(0);
             ToggleColorIconExistence();
         }
 
@@ -77,11 +78,12 @@ namespace GameLauncher.Components
             IconsAnimBehavior.ToSelectingPrev();
         }
 
-        private void UpdateText(int index)
+        private void UpdateGameState(int index)
         {
             TitleText.text = GameDatas[index]?.Title;
             GenreText.text = GameDatas[index]?.Genre;
             SummaryText.text = GameDatas[index]?.Summary;
+            TextBack.sprite = GameDatas[index]?.Sprite;
         }
 
         private void ToggleColorIconExistence()
@@ -103,7 +105,6 @@ namespace GameLauncher.Components
             {
                 ToPrevText.color = Color.gray;
             }
-
         }
 
         private IconList IconList { get; set; }
