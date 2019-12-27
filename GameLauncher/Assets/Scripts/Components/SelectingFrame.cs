@@ -9,7 +9,6 @@ public class SelectingFrame : MonoBehaviour
     [SerializeField] Image DiscriptionFrame = null;
     [SerializeField] Image HeartFrame = null;
 
-    RectTransform Rect = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +25,18 @@ public class SelectingFrame : MonoBehaviour
     {
         GameIconFrame.enabled = DiscriptionFrame.enabled = HeartFrame.enabled = false;
 
-        switch (positionNum)
+        switch (PositionNum)
         {
             case Position.GameIcon:
+                GameIconFrame.enabled = true;
                 break;
             case Position.Discription:
                 GameIconFrame.enabled = true;
-                positionNum = Position.GameIcon;
+                PositionNum = Position.GameIcon;
                 break;
             case Position.Heart:
                 DiscriptionFrame.enabled = true;
-                positionNum = Position.Discription;
+                PositionNum = Position.Discription;
                 break;
         }
     } 
@@ -45,23 +45,24 @@ public class SelectingFrame : MonoBehaviour
     public void ToLeft()
     {
         GameIconFrame.enabled = DiscriptionFrame.enabled= HeartFrame.enabled = false;
-        switch (positionNum)
+        switch (PositionNum)
         {
             case Position.GameIcon:
                 DiscriptionFrame.enabled = true;
-                positionNum = Position.Discription;
+                PositionNum = Position.Discription;
                 break;
             case Position.Discription:
                 HeartFrame.enabled = true;
-                positionNum = Position.Heart;
+                PositionNum = Position.Heart;
                 break;
             case Position.Heart:
+                HeartFrame.enabled = true;
                 break;
         }
     }
 
-    private Position positionNum { get; set; }
-    enum Position
+    public Position PositionNum { get; private set; }
+    public enum Position
     {
         GameIcon,
         Discription,

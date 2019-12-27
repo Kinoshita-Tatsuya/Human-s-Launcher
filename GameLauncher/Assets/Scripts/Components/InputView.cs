@@ -12,15 +12,15 @@ namespace GameLauncher.Components
 
         private void Update()
         {
-            if (Input.GetAxis("Submit") > 0)
+            if (Input.GetButtonDown("Submit"))
             {
-                GameDataPresenter.ExecuteSelecting();
+                SwitchingExection();
             }
-            if (Input.GetAxis("Heart") > 0)
+            if (Input.GetButtonDown("Heart"))
             {
                 GameDataPresenter.IncreaseHeartNum();
             }
-            if (Input.GetAxis("Discription") > 0)
+            if (Input.GetButtonDown("Discription"))
             {
                 //詳細表示
                 GameDataPresenter.ExecuteDiscription();
@@ -42,17 +42,43 @@ namespace GameLauncher.Components
             {
                 GameDataPresenter.ToSelectingPrev();
             }
-            if (Input.GetAxis("Horizontal") > 0)
+
+            if (Input.GetAxis("Horizontal") > 0 && GetHorizontalDown())
             {
                 SelectingFrame.ToRight();
             }
 
-            if (Input.GetAxis("Horizontal") < 0)
+            if (Input.GetAxis("Horizontal") < 0 && GetHorizontalDown())
             {
                 SelectingFrame.ToLeft();
             }
-
+            PrevHorizontal = Input.GetAxis("Horizontal");
         }
+
+        bool GetHorizontalDown()
+        {
+            if (0 != PrevHorizontal) {
+                return false;
+            }
+            return true;
+        }
+
+        private void SwitchingExection()
+        {
+            switch (SelectingFrame.PositionNum)
+            {
+                case SelectingFrame.Position.GameIcon:
+                    GameDataPresenter.ExecuteSelecting();
+                    break;
+                case SelectingFrame.Position.Discription:
+                    GameDataPresenter.ExecuteDiscription();
+                    break;
+                case SelectingFrame.Position.Heart:
+                    Debug.Log("Heart");
+                    break;
+            }
+        }
+
         private bool CanAnimation { get; set; } = false;
         private bool ToggleCanAnimation()
         {
@@ -62,5 +88,6 @@ namespace GameLauncher.Components
         private GameDataPresenter GameDataPresenter { get; set; }
         private SelectingFrame SelectingFrame { get; set; }
 
+        private float PrevHorizontal { get; set; }
     }
 }
