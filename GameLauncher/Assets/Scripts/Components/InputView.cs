@@ -74,7 +74,7 @@ namespace GameLauncher.Components
                     GameDataPresenter.ExecuteDiscription();
                     break;
                 case SelectingFrame.Position.Heart:
-                    Debug.Log("Heart");
+                    GameDataPresenter.IncreaseHeartNum();
                     break;
             }
         }

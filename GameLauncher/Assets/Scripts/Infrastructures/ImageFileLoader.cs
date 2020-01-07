@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Assets.Scripts.Infrastructures;
+using System;
 using System.IO;
-using UnityEditor;
 
 namespace GameLauncher.Infrastructures
 {
@@ -20,19 +20,19 @@ namespace GameLauncher.Infrastructures
             }
             catch (FileNotFoundException e)
             {
-                EditorUtility.DisplayDialog("❌Error", "ファイルパスに間違いがあります。\n" + e.Message, "OK");
+                MessageBoxShower.DisplayDialog("❌Error", "ファイルパスに間違いがあります。\n" + e.Message, "OK");
 
                 return null;
             }
             catch (ArgumentException e)
             {
-                EditorUtility.DisplayDialog("❌Error", "ファイルパスが空欄です。\n" + e.Message, "OK");
+                MessageBoxShower.DisplayDialog("❌Error", "ファイルパスが空欄です。\n" + e.Message, "OK");
 
                 return null;
             }
             catch (DirectoryNotFoundException e)
             {
-                EditorUtility.DisplayDialog("❌Error", "ファイルパスに間違いがあります。\n" + e.Message, "OK");
+                MessageBoxShower.DisplayDialog("❌Error", "ファイルパスに間違いがあります。\n" + e.Message, "OK");
 
                 return null;
 

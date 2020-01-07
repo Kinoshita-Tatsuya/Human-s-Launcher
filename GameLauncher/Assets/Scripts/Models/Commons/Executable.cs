@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Assets.Scripts.Infrastructures;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using UnityEditor;
 
 namespace GameLauncher.Models.Commons
 {
@@ -33,12 +33,12 @@ namespace GameLauncher.Models.Commons
             catch (Win32Exception e)
             {
                 EndProcess(this,EventArgs.Empty);
-                EditorUtility.DisplayDialog("❌Error", "ファイルパスに間違いがあります。\n" + e.Message, "OK");
+                MessageBoxShower.DisplayDialog("❌Error", "ファイルパスに間違いがあります。\n" + e.Message, "OK");
             }
             catch (InvalidOperationException e)
             {
                 EndProcess(this, EventArgs.Empty);
-                EditorUtility.DisplayDialog("❌Error", "ファイルパスが存在しません。\n" + e.Message, "OK");
+                MessageBoxShower.DisplayDialog("❌Error", "ファイルパスが存在しません。\n" + e.Message, "OK");
             }
         }
 
