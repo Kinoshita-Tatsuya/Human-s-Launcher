@@ -12,7 +12,7 @@ namespace Assets.Scripts.Infrastructures
     {
         public static bool DisplayDialog(string title, string message, string ok)
         {
-#if UnityEditor 
+#if UNITY_EDITOR 
             return EditorUtility.DisplayDialog(title, message, ok);
 #else
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
