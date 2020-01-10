@@ -59,10 +59,10 @@ namespace GameLauncher.Components
 
             var iconFlexAnim = IconList.Selecting.GetComponent<IconFlexibleAnimator>();
 
-            iconFlexAnim.OnAnimationStarted += () => { PlaysAnimation = true; };
+            iconFlexAnim.OnAnimationStarted += () => { IsPlayingAnimation = true; };
             iconFlexAnim.OnAnimationEnded += () => 
             {
-                PlaysAnimation = false;
+                IsPlayingAnimation = false;
                 if (SelectingFrame.PositionNum != SelectingFrame.Position.GameIcon) return;
                 SelectingFrame.DisplayGameIconFrame(true); 
             };                                                 
@@ -165,7 +165,7 @@ namespace GameLauncher.Components
             SelectingFrame.ToRight();
         }
 
-        public bool PlaysAnimation { get; set; } = false;
+        public bool IsPlayingAnimation { get; set; } = false;
 
         private GameData SelectingGameData => GameDatas[IconList.SelectingIndex];
 

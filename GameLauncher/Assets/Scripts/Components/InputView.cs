@@ -11,6 +11,8 @@ namespace GameLauncher.Components
 
         private void Update()
         {
+            if (GameDataPresenter.IsPlayingAnimation) return;
+
             if (Input.GetButtonDown("Submit"))
             {
                 GameDataPresenter.SwitchingExection();
@@ -33,7 +35,7 @@ namespace GameLauncher.Components
             ToggleCanAnimation();
 
             if (!CanAnimation) return;
-            if (GameDataPresenter.PlaysAnimation) return;
+            if (GameDataPresenter.IsPlayingAnimation) return;
 
             if (Input.GetAxis("Vertical") < 0)
             {
