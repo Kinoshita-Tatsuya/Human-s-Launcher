@@ -58,7 +58,14 @@ namespace GameLauncher.Components
             IconsAnimBehavior.OnSelectingChanged += (_) => { ToggleColorIconExistence(); };
 
             var iconFlexAnim = IconList.Selecting.GetComponent<IconFlexibleAnimator>();
-            iconFlexAnim.OnAnimationEnded += () => { SelectingFrame.DisplayGameIconFrame(true); };                                                 
+
+            iconFlexAnim.OnAnimationStarted += () => { PlaysAnimation = true; };
+            iconFlexAnim.OnAnimationEnded += () => 
+            {
+                PlaysAnimation = false;
+                if (SelectingFrame.PositionNum != SelectingFrame.Position.GameIcon) return;
+                SelectingFrame.DisplayGameIconFrame(true); 
+            };                                                 
 
             UpdateGameState(0);
             ToggleColorIconExistence();
@@ -157,6 +164,8 @@ namespace GameLauncher.Components
         {
             SelectingFrame.ToRight();
         }
+
+        public bool PlaysAnimation { get; set; } = false;
 
         private GameData SelectingGameData => GameDatas[IconList.SelectingIndex];
 

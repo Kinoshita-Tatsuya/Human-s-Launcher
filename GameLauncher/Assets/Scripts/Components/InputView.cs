@@ -33,6 +33,8 @@ namespace GameLauncher.Components
             ToggleCanAnimation();
 
             if (!CanAnimation) return;
+            if (GameDataPresenter.PlaysAnimation) return;
+
             if (Input.GetAxis("Vertical") < 0)
             {
                 GameDataPresenter.ToSelectingNext();
