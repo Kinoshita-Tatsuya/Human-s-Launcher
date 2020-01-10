@@ -1,14 +1,25 @@
 ﻿using GameLauncher.Infrastructures;
 using GameLauncher.Models.Commons;
 using GameLauncher.Models.DomainObjects;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
+using UnityEngine;
 
 namespace GameLauncher.Models.Services
 {
     public static class GameDataService
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        static extern int ShowWindow(IntPtr hWnd, int nCmdShow);
+        const int SW_RESTORE = 9;
+        const int SW_MINIMIZE = 6;
+
         public static List<GameData> Get()
         {
             var gameDatas = new List<GameData>();
@@ -16,6 +27,20 @@ namespace GameLauncher.Models.Services
             foreach (var folderName in GameListDAO.Get()) 
             {               
                 var exeAsExecutable = new Executable(folderName + "/Exe.lnk");
+                exeAsExecutable.OnProcessStarted += (_) =>
+                {
+                    IntPtr hwnd = FindWindow(null, "GameLauncher");
+
+                    ShowWindow(hwnd, SW_MINIMIZE);
+                };
+
+                exeAsExecutable.OnProcessEnded += (sender, e) =>
+                {
+                    IntPtr hwnd = FindWindow(null, "GameLauncher");
+
+                    ShowWindow(hwnd, SW_RESTORE);
+                };
+
                 var sprite = SpriteFactory.Create(folderName + "/Icon.png");
                 var descriptionAsExecutable = new Executable(folderName + "/Description.pdf");
                 var summary = FileErrorCatcher.CatchError(GetSummaryData, folderName + "/Summary.txt");
