@@ -21,6 +21,11 @@ public class SelectingFrame : MonoBehaviour
 
     }
 
+    public void DisplayGameIconFrame(bool isActive)
+    {
+        GameIconFrame.enabled = isActive;
+    }
+
     public void ToRight()
     {
         GameIconFrame.enabled = DiscriptionFrame.enabled = HeartFrame.enabled = false;

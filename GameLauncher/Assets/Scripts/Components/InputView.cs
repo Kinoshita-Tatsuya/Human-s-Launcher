@@ -6,15 +6,14 @@ namespace GameLauncher.Components
     {
         private void Start()
         {
-            GameDataPresenter = FindObjectOfType<GameDataPresenter>() as GameDataPresenter;
-            SelectingFrame = FindObjectOfType<SelectingFrame>() as SelectingFrame;
+            GameDataPresenter = FindObjectOfType<GameDataPresenter>() as GameDataPresenter;            
         }
 
         private void Update()
         {
             if (Input.GetButtonDown("Submit"))
             {
-                SwitchingExection();
+                GameDataPresenter.SwitchingExection();
             }
             if (Input.GetButtonDown("Heart"))
             {
@@ -46,33 +45,16 @@ namespace GameLauncher.Components
 
             if (GetAxis("Horizontal") > 0)
             {
-                SelectingFrame.ToRight();
+                GameDataPresenter.ToSelectingFrameRight();
                 LapTime = reinputTime_s;
             }
 
             if (GetAxis("Horizontal") < 0)
             {
-                SelectingFrame.ToLeft();
+                GameDataPresenter.ToSelectingFrameLeft();
                 LapTime = reinputTime_s;
             }
-        }
-
-
-        private void SwitchingExection()
-        {
-            switch (SelectingFrame.PositionNum)
-            {
-                case SelectingFrame.Position.GameIcon:
-                    GameDataPresenter.ExecuteSelecting();
-                    break;
-                case SelectingFrame.Position.Discription:
-                    GameDataPresenter.ExecuteDiscription();
-                    break;
-                case SelectingFrame.Position.Heart:
-                    GameDataPresenter.IncreaseHeartNum();
-                    break;
-            }
-        }
+        }        
 
         private float GetAxis(string str)
         {
@@ -87,8 +69,7 @@ namespace GameLauncher.Components
             return CanAnimation = !CanAnimation;
         }
 
-        private GameDataPresenter GameDataPresenter { get; set; }
-        private SelectingFrame SelectingFrame { get; set; }
+        private GameDataPresenter GameDataPresenter { get; set; }        
 
         private float PrevHorizontal { get; set; }
         private readonly float reinputTime_s = 0.1f;

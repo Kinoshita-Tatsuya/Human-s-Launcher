@@ -51,9 +51,14 @@ namespace GameLauncher.Components
                 nextTransform,
                 nextFramTransform,
                 nonSelectingTransform);
+            
+            SelectingFrame = FindObjectOfType<SelectingFrame>() as SelectingFrame;
 
             IconsAnimBehavior.OnSelectingChanged += UpdateGameState;
             IconsAnimBehavior.OnSelectingChanged += (_) => { ToggleColorIconExistence(); };
+
+            var iconFlexAnim = IconList.Selecting.GetComponent<IconFlexibleAnimator>();
+            iconFlexAnim.OnAnimationEnded += () => { SelectingFrame.DisplayGameIconFrame(true); };                                                 
 
             UpdateGameState(0);
             ToggleColorIconExistence();
@@ -71,11 +76,13 @@ namespace GameLauncher.Components
 
         public void ToSelectingNext()
         {
-            IconsAnimBehavior.ToSelectingNext();
+            SelectingFrame.DisplayGameIconFrame(false);
+            IconsAnimBehavior.ToSelectingNext();            
         }
 
         public void ToSelectingPrev()
         {
+            SelectingFrame.DisplayGameIconFrame(false);
             IconsAnimBehavior.ToSelectingPrev();
         }
 
@@ -125,10 +132,38 @@ namespace GameLauncher.Components
             }
         }
 
+        public void SwitchingExection()
+        {
+            switch (SelectingFrame.PositionNum)
+            {
+                case SelectingFrame.Position.GameIcon:
+                    ExecuteSelecting();
+                    break;
+                case SelectingFrame.Position.Discription:
+                    ExecuteDiscription();
+                    break;
+                case SelectingFrame.Position.Heart:
+                    IncreaseHeartNum();
+                    break;
+            }
+        }        
+        
+        public void ToSelectingFrameLeft()
+        {
+            SelectingFrame.ToLeft();
+        }
+
+        public void ToSelectingFrameRight()
+        {
+            SelectingFrame.ToRight();
+        }
+
         private GameData SelectingGameData => GameDatas[IconList.SelectingIndex];
 
         private IconList IconList { get; set; }
         private IIconsAnimBehavior IconsAnimBehavior { get; set; }
+        private SelectingFrame SelectingFrame { get; set; }
+
         List<GameData> GameDatas { get; set; }
     }
 }
