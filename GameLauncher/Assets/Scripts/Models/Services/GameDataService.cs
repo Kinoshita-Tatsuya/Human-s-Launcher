@@ -24,21 +24,22 @@ namespace GameLauncher.Models.Services
         {
             var gameDatas = new List<GameData>();
 
+            if (thisHWnd == IntPtr.Zero)
+            {
+                thisHWnd = FindWindow(null, "GameLauncher");
+            }
+
             foreach (var folderName in GameListDAO.Get()) 
             {               
                 var exeAsExecutable = new Executable(folderName + "/Exe.lnk");
                 exeAsExecutable.OnProcessStarted += (_) =>
                 {
-                    IntPtr hwnd = FindWindow(null, "GameLauncher");
-
-                    ShowWindow(hwnd, SW_MINIMIZE);
+                    ShowWindow(thisHWnd, SW_MINIMIZE);
                 };
 
                 exeAsExecutable.OnProcessEnded += (sender, e) =>
                 {
-                    IntPtr hwnd = FindWindow(null, "GameLauncher");
-
-                    ShowWindow(hwnd, SW_RESTORE);
+                    ShowWindow(thisHWnd, SW_RESTORE);
                 };
 
                 var sprite = SpriteFactory.Create(folderName + "/Icon.png");
@@ -80,5 +81,7 @@ namespace GameLauncher.Models.Services
                 return sammryData;
             }
         }
+
+        private static IntPtr thisHWnd = IntPtr.Zero;
     }    
 }
