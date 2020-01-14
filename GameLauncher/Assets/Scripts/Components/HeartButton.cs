@@ -7,7 +7,7 @@ namespace GameLauncher.Components
     public class HeartButton : MonoBehaviour
     {
         [SerializeField] float reinputTime_s = 0.0f;
-        [SerializeField] Color CantInputColor;       
+        [SerializeField] Color CantInputColor = Color.white;       
 
         private void Start()
         {

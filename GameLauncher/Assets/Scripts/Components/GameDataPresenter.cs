@@ -4,8 +4,10 @@ using GameLauncher.Models.RelateIcon;
 using GameLauncher.Models.RelateIcon.IconsAnimBehavior;
 using GameLauncher.Models.Services;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace GameLauncher.Components
 {
@@ -27,6 +29,7 @@ namespace GameLauncher.Components
         [SerializeField] private Text ToNextText = null;
         [SerializeField] private Text ToPrevText = null;
         [SerializeField] private Text HeartNumText = null;
+        [SerializeField] private VideoPlayer backgroundVideoPlayer = null;
 
         public void Start()
         {
@@ -65,7 +68,9 @@ namespace GameLauncher.Components
                 IsPlayingAnimation = false;
                 if (SelectingFrame.PositionNum != SelectingFrame.Position.GameIcon) return;
                 SelectingFrame.DisplayGameIconFrame(true); 
-            };                                                 
+            };
+
+            backgroundVideoPlayer.url = Path.GetFullPath("ExternalFiles/movie.mp4");
 
             UpdateGameState(0);
             ToggleColorIconExistence();
